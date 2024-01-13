@@ -9,11 +9,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.litekreu.utaxi.domain.MapViewModel
 import com.litekreu.utaxi.presentation.elements.MapNavBar
 import com.litekreu.utaxi.presentation.screens.MapScreen
 
 @Composable
-fun MainScreen(navController: NavHostController = rememberNavController()) {
+fun MainScreen(
+    navController: NavHostController = rememberNavController(),
+    viewModel: MapViewModel
+) {
     Scaffold(
         bottomBar = {
             MapNavBar(navController)
@@ -22,7 +26,7 @@ fun MainScreen(navController: NavHostController = rememberNavController()) {
         NavHost(navController = navController, startDestination = "map") {
             composable(route = "map") {
                 Box(modifier = Modifier.padding(padding)) {
-                    MapScreen()
+                    MapScreen(viewModel)
                 }
             }
             composable(route = "list") {
