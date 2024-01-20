@@ -27,9 +27,11 @@ fun MapNavBar(
                         navItem.selectedIcon
                     }
                     else navItem.unselectedIcon, contentDescription = null)
+                    
                 },
                 label = { Text(text = navItem.route) }
             )
+
         }
     }
 }

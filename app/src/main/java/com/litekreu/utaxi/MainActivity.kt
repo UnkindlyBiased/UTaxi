@@ -11,7 +11,9 @@ import androidx.compose.ui.Modifier
 import com.litekreu.utaxi.domain.MapViewModel
 import com.litekreu.utaxi.presentation.MainScreen
 import com.litekreu.utaxi.ui.theme.UTaxiTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel by viewModels<MapViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
