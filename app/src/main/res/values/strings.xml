@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UTaxi</string>
+    <string name="map">Мапа</string>
+    <string name="routes_list">Список маршрутів</string>
 </resources>

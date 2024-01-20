@@ -1,6 +1,7 @@
 package com.litekreu.utaxi.di
 
 import com.litekreu.utaxi.data.api.RequestsApi
+import com.litekreu.utaxi.data.repository.RequestsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,13 +14,11 @@ import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
     @Provides
-    @Singleton
     fun providesKtorfitInstance(): Ktorfit = ktorfit {
         baseUrl(RequestsApi.BASE_URL)
         httpClient(HttpClient {
@@ -34,6 +33,9 @@ object AppModule {
     }
 
     @Provides
-    @Singleton
     fun providesApi(ktorfitInstance: Ktorfit): RequestsApi = ktorfitInstance.create()
+
+    @Provides
+    fun providesRepositoryImplementation(api: RequestsApi):
+            RequestsRepositoryImpl = RequestsRepositoryImpl(api)
 }
